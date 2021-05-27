@@ -40,6 +40,10 @@ h1{
 #group-btn > button > img{
     width: 100%;
 }
+button{
+    border: 3px solid black;
+    margin: 5px;
+}
 footer{
     text-align: center;
     padding: 10px;

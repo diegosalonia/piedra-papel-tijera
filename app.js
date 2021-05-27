@@ -25,10 +25,22 @@ scissorsBtn.addEventListener("click", () => {
 });
 
 function play(userOption){
-    const machineOption = calcMachineOption();
+    userImg.src = "img/"+userOption+".png";
+
+    resultText.innerHTML = "waiting for decision!";
+
+    const interval = setInterval(() => {
+        const machineOption = calcMachineOption();
+        machineImg.src = "img/"+machineOption+".png";
+    }, 200);
+
+    setTimeout(function(){
+
+        clearInterval(interval);
+
+        const machineOption = calcMachineOption();
     const result = calcResult(userOption, machineOption);
 
-    userImg.src = "img/"+userOption+".png"
     machineImg.src = "img/"+machineOption+".png"
 
     switch(result) {
@@ -43,6 +55,9 @@ function play(userOption){
             break;
 
     }
+    }, 1000)
+
+    
 }
  function calcMachineOption() {
      const number = Math.floor(Math.random()*3);
