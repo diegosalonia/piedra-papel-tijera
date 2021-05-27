@@ -1,6 +1,6 @@
-const ROCK = 0;
-const PAPER = 1;
-const SCISSORS = 2;
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 
 const TIE = 0;
 const WIN = 1;
@@ -9,6 +9,10 @@ const LOST = 2;
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
+const resultText = document.getElementById("start-text");
+const userImg = document.getElementById("user-img");
+const machineImg = document.getElementById("machine-img");
+
 
 rockBtn.addEventListener("click", () => {
     play(ROCK)
@@ -21,24 +25,36 @@ scissorsBtn.addEventListener("click", () => {
 });
 
 function play(userOption){
-    const machineOption = Math.floor(Math.random() * 3);
+    const machineOption = calcMachineOption();
     const result = calcResult(userOption, machineOption);
 
-    
+    userImg.src = "img/"+userOption+".png"
+    machineImg.src = "img/"+machineOption+".png"
 
     switch(result) {
         case TIE:
-            alert(machineOption + " Tie")
+            resultText.innerHTML = "You have tied!"
             break;
         case WIN:
-            alert(machineOption + " Win")
+            resultText.innerHTML = "You win!"
             break;
         case LOST:
-            alert(machineOption + " Lost")
+            resultText.innerHTML = "You lost!"
             break;
 
     }
 }
+ function calcMachineOption() {
+     const number = Math.floor(Math.random()*3);
+     switch (number) {
+         case 0:
+             return ROCK;
+         case 1:
+             return PAPER;
+         case 2:
+             return SCISSORS;
+     }
+ }
 
 function calcResult(userOption, machineOption){
 

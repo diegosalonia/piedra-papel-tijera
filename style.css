@@ -23,11 +23,13 @@ h1{
 }
 
 #result{
-    height: 50vh;
-}
-.start-text{
-    font-size: 26px;
     text-align: center;
+}
+#result img {
+    width: 40%;
+}
+#start-text{
+    font-size: 26px;
     padding: 20px;
 }
 #group-btn{
